@@ -36,8 +36,8 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        '''get data based on ranges of index
-        '''
+        """get data based on ranges of index
+        """
         assert type(page) == int and type(page_size) == int
         assert page > 0 and page_size > 0
         first, last = index_range(page, page_size)
@@ -47,15 +47,15 @@ class Server:
         return data[first:last]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
-        '''prepares and return a dictionary of values
-        '''
+        """prepares and return a dictionary of values
+        """
         first, last = index_range(page, page_size)
         csv_data = self.get_page(page, page_size)
         res = {
             'page_size': len(csv_data),
             'page': page,
             'data': csv_data,
-            'next_page': page + 1 if last < len(self.__dataset) else None, ,
+            'next_page': page + 1 if last < len(self.__dataset) else None,
             'prev_page': None if first < 1 else page - 1,
             'total_pages': math.ceil(len(self.__dataset) / page_size),
         }
