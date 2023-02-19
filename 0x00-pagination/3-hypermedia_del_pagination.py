@@ -44,13 +44,13 @@ class Server:
         '''
         assert index is not None and index >= 0 and index <= max(data.keys())
         data = self.indexed_dataset()
-        res = {}
+        res = dict()
         count = 0
         cvs_data = []
         next_idx = None
         first = index if index else 0
         for i, item in data.items():
-            if >= first and count < page_size:
+            if i >= first and count < page_size:
                 cvs_data.append(item)
                 count += 1
                 continue
