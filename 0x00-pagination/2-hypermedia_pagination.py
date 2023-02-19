@@ -46,11 +46,12 @@ class Server:
         '''prepares and return a dictionary of values
         '''
         res = {}
+        first, last = index_range(page, page_size)
         csv_data = self.dataset()
         res['page_size'] = page_size
         res['page'] = page
         res['data'] = self.get_page(page, page_size)
-        res['next_page'] = page + 1
-        res['prev_page'] = 'None' if page < 1 else page - 1
+        res['next_page'] = page + 1 if last < len(self.__dataset) else None,
+        res['prev_page'] = None if first < 1 else page - 1
         res['total_pages'] = math.ceil(len(self.__dataset) / page_size)
         return res
