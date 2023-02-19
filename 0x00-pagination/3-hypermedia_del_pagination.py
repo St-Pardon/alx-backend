@@ -40,10 +40,10 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        '''Get page info from given index
-        '''
-        assert index is not None and index >= 0 and index <= max(data.keys())
+        """Get page info from given index
+        """
         data = self.indexed_dataset()
+        assert index is not None and index >= 0 and index <= max(data.keys())
         res = dict()
         count = 0
         cvs_data = []
