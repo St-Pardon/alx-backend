@@ -69,5 +69,5 @@ class LFUCache(BaseCaching):
         if key is None or key not in self.cache_data.keys():
             return None
         if key is not None and key in self.cache_data:
-            self.cache_data.move_to_end(key, last=False)
+            self.__reorder_items(key)
         return self.cache_data.get(key, None)
