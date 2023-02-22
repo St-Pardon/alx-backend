@@ -23,7 +23,9 @@ class LRUCache(BaseCaching):
         LRUCache.rm_item = 0
         self.cache_data[key] = item
         if len(self.cache_data.keys()) > BaseCaching.MAX_ITEMS:
-            while list(self.cache_data.keys())[LRUCache.rm_item] in LRUCache.active:
+            while list(
+                self.cache_data.keys()
+            )[LRUCache.rm_item] in LRUCache.active:
                 LRUCache.rm_item += 1
             if len(LRUCache.active) > 0:
                 LRUCache.active.pop(0)
